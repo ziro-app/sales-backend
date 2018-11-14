@@ -11,17 +11,27 @@ try {
 			'Access-Control-Allow-Origin': '*',
 			// 'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
 			'Access-Control-Allow-Headers': 'Content-Type',
-			'Vary': 'Origin'			
+			'Vary': 'Origin'
 		}
 		if (requestOK)
 			return {
-				headers: { headers },
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					// 'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
+					'Access-Control-Allow-Headers': 'Content-Type',
+					'Vary': 'Origin'
+				},
 				statusCode: 200,
 				body: JSON.stringify(body, null, 4)
 			}
 		else
 			return {
-				headers: { headers },
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					// 'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
+					'Access-Control-Allow-Headers': 'Content-Type',
+					'Vary': 'Origin'
+				},
 				statusCode: 205,
 				body: 'Invalid method, parameters or data'
 			}
