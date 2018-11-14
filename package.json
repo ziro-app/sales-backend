@@ -1,0 +1,12 @@
+{
+  "name": "sales-backend",
+  "version": "1.0.0",
+  "description": "Receive sales data from frontend and save it to a spreadsheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vitor Barbosa",
+  "license": "ISC"
+}
