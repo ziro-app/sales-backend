@@ -23,12 +23,12 @@ try {
 			return {
 				headers: { headers },
 				statusCode: 200,
-				body: {
+				body: JSON.stringify({
 					message: 'Invalid method, parameters or data.',
 					method: httpMethod,
 					parameters: queryStringParameters,
 					data: body
-				}
+				}, null, 4)
 			}
 	}
 } catch (error) {
