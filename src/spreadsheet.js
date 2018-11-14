@@ -15,13 +15,13 @@ try {
 		}
 		if (requestOK)
 			return {
-				headers: { headers },
+				headers,
 				statusCode: 200,
 				body: JSON.stringify(body, null, 4)
 			}
 		else
 			return {
-				headers: { headers },
+				headers,
 				statusCode: 200,
 				body: JSON.stringify({
 					message: 'Invalid method, parameters or data.',
