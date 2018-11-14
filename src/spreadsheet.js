@@ -1,13 +1,10 @@
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 		/* check if method, parameters and data are all valid */
-		console.log(httpMethod)
-		console.log(queryStringParameters)
-		console.log(body)
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		const { start_date, representative, reseller, transaction_type, end_date } = body
-		const requestOK = methodOk && parametersOK && start_date && representative && reseller
+		const requestOK = methodOk && parametersOk && start_date && representative && reseller
 			&& transaction_type && end_date
 		/* define headers for client response */
 		const headers = {
@@ -36,7 +33,10 @@ try {
 					'Vary': 'Origin'
 				},
 				statusCode: 205,
-				body: 'Invalid method, parameters or data'
+				body: `Invalid method, parameters or data.
+					Method:${httpMethod}.
+					Parameters:${queryStringParameters}.
+					Data:${body}`
 			}
 	}
 } catch (error) {
