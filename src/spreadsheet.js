@@ -22,7 +22,7 @@ try {
 		else
 			return {
 				headers,
-				statusCode: 405,
+				statusCode: 205,
 				body: 'Invalid method, parameters or data'
 			}
 	}
