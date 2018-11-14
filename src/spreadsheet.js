@@ -5,8 +5,12 @@ try {
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		console.log(body)
 		const { start_date, representative, reseller, transaction_type, end_date } = body
+		console.log(start_date)
+		console.log(representative)
+		console.log(reseller)
 		const requestOk = methodOk && parametersOk && start_date && representative && reseller
 			&& transaction_type && end_date
+		console.log(requestOk)
 		/* define headers for client response */
 		const headers = {
 			'Access-Control-Allow-Origin': '*',
