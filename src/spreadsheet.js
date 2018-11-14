@@ -1,6 +1,9 @@
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 		/* check if method, parameters and data are all valid */
+		console.log(httpMethod)
+		console.log(queryStringParameters)
+		console.log(body)
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		const { start_date, representative, reseller, transaction_type, end_date } = body
@@ -24,7 +27,17 @@ try {
 				statusCode: 200,
 				body: JSON.stringify(body, null, 4)
 			}
-
+		else
+			return {
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					// 'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
+					'Access-Control-Allow-Headers': 'Content-Type',
+					'Vary': 'Origin'
+				},
+				statusCode: 205,
+				body: 'Invalid method, parameters or data'
+			}
 	}
 } catch (error) {
 	console.log(error)
