@@ -3,8 +3,9 @@ try {
 		/* check if method, parameters and data are all valid */
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
+		console.log(body)
 		const { start_date, representative, reseller, transaction_type, end_date } = body
-		const requestOK = methodOk && parametersOk && start_date && representative && reseller
+		const requestOk = methodOk && parametersOk && start_date && representative && reseller
 			&& transaction_type && end_date
 		/* define headers for client response */
 		const headers = {
@@ -13,7 +14,7 @@ try {
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
 		}
-		if (requestOK)
+		if (requestOk)
 			return {
 				headers,
 				statusCode: 200,
