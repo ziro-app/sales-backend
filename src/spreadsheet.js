@@ -37,7 +37,7 @@ try {
 		} else
 				return {
 					headers,
-					statusCode: 405,
+					statusCode: 200,
 					body: JSON.stringify({
 						message: 'Invalid query parameters or data.',
 						method: httpMethod,
