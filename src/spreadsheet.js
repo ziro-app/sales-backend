@@ -6,6 +6,7 @@ try {
 		console.log('body',body)
 		const { start_date, representative, reseller, transaction_type, end_date } = body
 		console.log('start_date',start_date)
+		console.log('body.start_date', body.start_date)
 		const requestOk = methodOk && parametersOk && start_date && representative && reseller
 			&& transaction_type && end_date
 		console.log('requestOk',requestOk)
