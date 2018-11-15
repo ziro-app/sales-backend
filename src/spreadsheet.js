@@ -12,11 +12,15 @@ try {
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
 			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
-			console.log(Object.keys(body))
-			console.log(typeof body)
 			console.log(start_date)
+			console.log(representative)
+			console.log(reseller)
+			console.log(transaction_type)
+			console.log(end_date)
 			const requestOk = methodOk && parametersOk && start_date && representative && reseller
 				&& transaction_type && end_date
+			console.log(requestOk)
+			console.log(parametersOk)
 			if (requestOk)
 				return {
 					headers,
