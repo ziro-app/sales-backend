@@ -3,14 +3,12 @@ try {
 		/* check if method, parameters and data are all valid */
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
-		console.log(body)
+		console.log('body',body)
 		const { start_date, representative, reseller, transaction_type, end_date } = body
-		console.log(start_date)
-		console.log(representative)
-		console.log(reseller)
+		console.log('start_date',start_date)
 		const requestOk = methodOk && parametersOk && start_date && representative && reseller
 			&& transaction_type && end_date
-		console.log(requestOk)
+		console.log('requestOk',requestOk)
 		/* define headers for client response */
 		const headers = {
 			'Access-Control-Allow-Origin': '*',
