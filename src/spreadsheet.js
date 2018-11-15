@@ -21,20 +21,13 @@ try {
 				return {
 					headers,
 					statusCode: 200,
-					body: JSON.stringify({
-						message: 'Invalid query parameters or data.',
-						parameters: queryStringParameters,
-						data: body
-					}, null, 4)
+					body: JSON.stringify({ message: 'Invalid query parameters or data' })
 				}
 		} else
 				return {
 					headers,
 					statusCode: 200,
-					body: JSON.stringify({
-						message: 'Invalid httpMethod. Use POST',
-						method: httpMethod
-					}, null, 4)
+					body: JSON.stringify({ message: 'Invalid httpMethod. Use POST' })
 				}
 	}
 } catch (error) {
