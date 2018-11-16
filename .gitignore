@@ -2,4 +2,3 @@ node_modules
 functions
 .env
 .DS_Store
-src/credentials.js
