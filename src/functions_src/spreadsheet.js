@@ -14,13 +14,13 @@ try {
 			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
 			if (requestOk) {
-				const id = 1
-				const cadastro = new Date()
-				const atendimento_inicio = start_date
+				const id = '1'
+				const cadastro = new Date().toString().substr(4,20)
+				const atendimento_inicio = new Date(start_date).toString().substr(4,11)
 				const assessor = representative
 				const lojista = reseller
 				const tipo = transaction_type
-				const atendimento_fim = end_date
+				const atendimento_fim = new Date(end_date).toString().substr(4,11)
 				const status = 'Aberto'
 				const { message, error } = await saveToSheet({
 					id, cadastro, atendimento_inicio, assessor, lojista,
