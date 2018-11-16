@@ -1,4 +1,4 @@
-const auth = require('../auth')
+const saveToSheet = require('../saveToSheet')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
@@ -8,7 +8,7 @@ try {
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
 		}
-		await auth()
+		console.log(await saveToSheet({ nome: 'vitor' }))
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {

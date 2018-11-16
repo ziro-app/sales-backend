@@ -2,18 +2,18 @@ require('dotenv').config()
 const GoogleSpreadsheet = require('google-spreadsheet')
 const credentials = require('./credentials')
 
-const auth = async () => {
+const auth = () => {
 	try {
-		const spreadsheet = new GoogleSpreadsheet(process.env.SPREADSHEET_ID)
 		return new Promise( (resolve, reject) => {
+			const spreadsheet = new GoogleSpreadsheet(process.env.SPREADSHEET_ID)
 			spreadsheet.useServiceAccountAuth(credentials, error => {
 				if (error)
 					reject({ message: 'Error in useServiceAccountAuth', error: error })
-				resolve(spreadsheet)
+				resolve(spreadsheet.addRow)
 			})
 		})
-	}	catch (error) {
-		return { message: 'Error in auth.js', error: error }
+	} catch (error) {
+		console.log(error)
 	}
 }
 
