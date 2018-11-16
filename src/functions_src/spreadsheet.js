@@ -1,3 +1,5 @@
+const auth = require('../auth')
+
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 		const headers = {
@@ -6,12 +8,14 @@ try {
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
 		}
+		await auth()
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
 			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
 			if (requestOk)
+				// console.log(await auth())
 				return {
 					headers,
 					statusCode: 200,
