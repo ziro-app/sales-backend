@@ -4,13 +4,15 @@
   "description": "Receive sales data from frontend and save it to a spreadsheet",
   "main": "index.js",
   "scripts": {
-    "start": "netlify-lambda serve ./src",
-    "build": "netlify-lambda build ./src"
+    "start": "netlify-lambda serve ./src/functions_src",
+    "build": "netlify-lambda build ./src/functions_src"
   },
   "keywords": [],
   "author": "Vitor Barbosa",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^6.1.0",
+    "google-spreadsheet": "^2.0.6",
     "netlify-lambda": "^1.0.3"
   }
 }
