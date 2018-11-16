@@ -1,4 +1,5 @@
 const saveToSheet = require('../saveToSheet')
+const formatDate = require('../formatDate')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
@@ -14,13 +15,14 @@ try {
 			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
 			if (requestOk) {
+				const now = new Date().toString() 
 				const atendimento_id = '1'
-				const cadastro = new Date().toString().substr(4,20)
-				const atendimento_inicio = new Date(start_date).toString().substr(4,11)
+				const cadastro = `${formatDate(now.substr(4,11))} ${now.substr(16,8)}`
+				const atendimento_inicio = formatDate(start_date)
 				const assessor = representative
 				const lojista = reseller
 				const tipo = transaction_type
-				const atendimento_fim = new Date(end_date).toString().substr(4,11)
+				const atendimento_fim = formatDate(end_date)
 				const status = 'Aberto'
 				const { message, error } = await saveToSheet({
 					atendimento_id, cadastro, atendimento_inicio, assessor, lojista,
