@@ -17,7 +17,7 @@ const translateMonth = month => {
 
 const formatDate = date => {
 	dateStr = new Date(date).toString()
-	return `${dateStr.substr(8,2)}/${month(dateStr.substr(4,3))}/${dateStr.substr(11,4)}`
+	return `${dateStr.substr(8,2)}/${translateMonth(dateStr.substr(4,3))}/${dateStr.substr(11,4)}`
 }
 
 module.exports = formatDate
