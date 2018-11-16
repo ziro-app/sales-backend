@@ -23,7 +23,7 @@ try {
 				const atendimento_fim = new Date(end_date).toString().substr(4,11)
 				const status = 'Aberto'
 				const { message, error } = await saveToSheet({
-					id, cadastro, atendimento_inicio, assessor, lojista,
+					atendimento_id, cadastro, atendimento_inicio, assessor, lojista,
 					tipo, atendimento_fim, status
 				})
 				if (message === 'SUCCESS')
