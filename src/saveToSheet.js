@@ -9,7 +9,7 @@ const saveToSheet = data => {
 			addRow(1, data, error => {
 				if (error)
 					reject({ message: 'Error in addRow', error: error })
-				resolve({ message: 'SUCCESS' })
+				resolve({ message: 'SUCCESS', error: '' })
 			})
 		})
 	} catch (error) {
