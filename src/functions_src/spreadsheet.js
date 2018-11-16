@@ -1,5 +1,6 @@
 const saveToSheet = require('../saveToSheet')
 const formatDate = require('../formatDate')
+const generateId = require('../generateId')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
@@ -16,7 +17,7 @@ try {
 			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
 			if (requestOk) {
 				const now = new Date().toString() 
-				const atendimento_id = '1'
+				const atendimento_id = await generateId()
 				const cadastro = `${formatDate(now.substr(4,11))} ${now.substr(16,8)}`
 				const atendimento_inicio = formatDate(start_date)
 				const assessor = representative
