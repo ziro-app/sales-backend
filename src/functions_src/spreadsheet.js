@@ -14,7 +14,7 @@ try {
 			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
 			if (requestOk) {
-				const id = '1'
+				const atendimento_id = '1'
 				const cadastro = new Date().toString().substr(4,20)
 				const atendimento_inicio = new Date(start_date).toString().substr(4,11)
 				const assessor = representative
