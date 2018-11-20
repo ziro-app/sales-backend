@@ -39,5 +39,6 @@ exports.formatDate = date => {
 
 exports.formatNow = () => {
 	const now = new Date().toLocaleString('pt-br', { timeZone: 'America/Sao_Paulo' })
+	console.log(now)
 	return `${now.substr(8,2)}/${numberToName(now.substr(5,2))}/${now.substr(0,4)} ${now.substr(11,8)}`
 }
