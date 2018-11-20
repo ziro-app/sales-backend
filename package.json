@@ -4,8 +4,8 @@
   "description": "Receive sales data from frontend and save it to a spreadsheet",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ICU_DATA=node_modules/full-icu && netlify-lambda serve ./src/functions_src",
-    "build": "export NODE_ICU_DATA=node_modules/full-icu && netlify-lambda build ./src/functions_src"
+    "start": "export NODE_ICU_DATA='node_modules/full-icu' && netlify-lambda serve ./src/functions_src",
+    "build": "export NODE_ICU_DATA='node_modules/full-icu' && netlify-lambda build ./src/functions_src"
   },
   "keywords": [],
   "author": "Vitor Barbosa",
