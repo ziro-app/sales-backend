@@ -10,7 +10,6 @@ try {
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
 		}
-		console.log(formatNow())
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
