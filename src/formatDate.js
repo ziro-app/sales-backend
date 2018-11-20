@@ -42,5 +42,5 @@ exports.formatNow = () => {
 	console.log(now)
 	console.log(now.substr(3,2))
 	console.log(numberToName(now.substr(3,2)))
-	return `${now.substr(0,3)}${numberToName(now.substr(3,2))}${now.substr(5,14)}`
+	return `${now.substr(8,2)}/${numberToName(now.substr(5,2))}/${now.substr(0,4)} ${now.substr(11,8)}`
 }
