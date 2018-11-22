@@ -13,20 +13,21 @@ try {
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
-			const { start_date, representative, reseller, transaction_type, end_date } = JSON.parse(body)
-			const requestOk = parametersOk && start_date && representative && reseller && transaction_type && end_date
+			const { start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
+			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
 			if (requestOk) {
 				const atendimento_id = await generateId()
 				const cadastro = formatNow()
 				const atendimento_inicio = formatDate(start_date)
 				const assessor = representative
 				const lojista = reseller
-				const tipo = transaction_type
+				const categoria = category
+				const tipo = type
 				const atendimento_fim = formatDate(end_date)
 				const status = 'Aberto'
 				const { message, error } = await saveToSheet({
 					atendimento_id, cadastro, atendimento_inicio, assessor, lojista,
-					tipo, atendimento_fim, status
+					categoria, tipo, atendimento_fim, status
 				})
 				if (message === 'SUCCESS')
 					return {
