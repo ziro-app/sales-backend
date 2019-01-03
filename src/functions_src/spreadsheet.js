@@ -15,13 +15,6 @@ try {
 		if (methodOk) {
 			const { start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
-			console.log(parametersOk)
-			console.log(start_date)
-			console.log(representative)
-			console.log(reseller)
-			console.log(category)
-			console.log(type)
-			console.log(end_date)
 			if (requestOk) {
 				const atendimento_id = await generateId()
 				const cadastro = formatNow()
@@ -64,3 +57,6 @@ try {
 } catch (error) {
 	console.log(error)
 }
+
+// curl -d '{"start_date": "22/jan/2019", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"31/jan/2019" }' -X POST https://sales-backend.ziro.online/.netlify/functions/spreadsheet
+// curl -d '{"start_date": "22/jan/2019", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"31/jan/2019" }' -X POST http://localhost:9000/spreadsheet
