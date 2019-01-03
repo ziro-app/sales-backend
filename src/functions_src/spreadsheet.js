@@ -1,6 +1,5 @@
 const generateId = require('../generateId')
-const formatDate = require('../formatDate')
-const { formatToTimeZone } = require('date-fns-timezone')
+const { formatDate, now } = require('../formatDate')
 const saveToSheet = require('../saveToSheet')
 
 try {
@@ -18,7 +17,7 @@ try {
 			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
 			if (requestOk) {
 				const atendimento_id = await generateId()
-				const cadastro = formatToTimeZone(new Date(), 'DD/MMM/YYYY HH:mm:ss', { timeZone: 'America/Sao_Paulo' })
+				const cadastro = now()
 				const atendimento_inicio = formatDate(start_date)
 				const assessor = representative
 				const lojista = reseller
@@ -59,5 +58,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"start_date": "22/jan/2019", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"31/jan/2019" }' -X POST https://sales-backend.ziro.online/.netlify/functions/spreadsheet
-// curl -d '{"start_date": "22/jan/2019", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"31/jan/2019" }' -X POST http://localhost:9000/spreadsheet
+// curl -d '{"start_date": "2019-01-02T20:00:00.000Z", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"2019-01-03T20:00:00.000Z" }' -X POST https://sales-backend.ziro.online/.netlify/functions/spreadsheet
+// curl -d '{"start_date": "2019-05-02T20:00:00.000Z", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"2019-08-03T20:00:00.000Z" }' -X POST http://localhost:9000/spreadsheet
