@@ -1,5 +1,6 @@
 const generateId = require('../generateId')
-const { formatNow, formatDate } = require('../formatDate')
+const formatDate = require('../formatDate')
+const { formatToTimeZone } = require('date-fns-timezone')
 const saveToSheet = require('../saveToSheet')
 
 try {
@@ -17,7 +18,7 @@ try {
 			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
 			if (requestOk) {
 				const atendimento_id = await generateId()
-				const cadastro = formatNow()
+				const cadastro = formatToTimeZone(new Date(), 'DD/MMM/YYYY HH:mm:ss', { timeZone: 'America/Sao_Paulo' })
 				const atendimento_inicio = formatDate(start_date)
 				const assessor = representative
 				const lojista = reseller

@@ -15,29 +15,7 @@ const translateMonth = month => {
 	}
 }
 
-const numberToName = month => {
-	switch (month) {
-		case '01': return 'Jan'
-		case '02': return 'Fev'
-		case '03': return 'Mar'
-		case '04': return 'Abr'
-		case '05': return 'Mai'
-		case '06': return 'Jun'
-		case '07': return 'Jul'
-		case '08': return 'Ago'
-		case '09': return 'Set'
-		case '10': return 'Out'
-		case '11': return 'Nov'
-		case '12': return 'Dez'
-	}
-}
-
-exports.formatDate = date => {
+module.exports = date => {
 	const dateStr = new Date(date).toString()
 	return `${dateStr.substr(8,2)}/${translateMonth(dateStr.substr(4,3))}/${dateStr.substr(11,4)}`
-}
-
-exports.formatNow = () => {
-	let now = new Date().toLocaleString('pt-br', { timeZone: 'America/Sao_Paulo' })
-	return `${now.substr(8,2)}/${numberToName(now.substr(5,2))}/${now.substr(0,4)} ${now.substr(11,8)}`
 }
