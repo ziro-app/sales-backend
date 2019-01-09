@@ -16,18 +16,18 @@ try {
 			const { start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
 			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
 			if (requestOk) {
-				const atendimento_id = await generateId()
+				const atendimento = await generateId()
 				const cadastro = now()
-				const atendimento_inicio = formatDate(start_date)
+				const inicio = formatDate(start_date)
 				const assessor = representative
 				const lojista = reseller
 				const categoria = category
 				const tipo = type
-				const atendimento_fim = formatDate(end_date)
+				const fim = formatDate(end_date)
 				const status = 'Aberto'
 				const { message, error } = await saveToSheet({
-					atendimento_id, cadastro, atendimento_inicio, assessor, lojista,
-					categoria, tipo, atendimento_fim, status
+					atendimento, cadastro, inicio, assessor, lojista,
+					categoria, tipo, fim, status
 				})
 				if (message === 'SUCCESS')
 					return {
