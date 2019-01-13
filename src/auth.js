@@ -9,7 +9,7 @@ const auth = () => {
 			spreadsheet.useServiceAccountAuth(credentials, error => {
 				if (error)
 					reject({ message: 'Error in useServiceAccountAuth', error: error })
-				resolve(spreadsheet.addRow)
+				resolve(spreadsheet)
 			})
 		})
 	} catch (error) {

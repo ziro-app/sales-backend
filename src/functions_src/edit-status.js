@@ -1,4 +1,4 @@
-// const editStatusInSheet = require('../saveToSheet')
+const editStatus = require('../editStatus')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
@@ -14,9 +14,7 @@ try {
 			const { status } = JSON.parse(body)
 			const requestOk = parametersOk && status
 			if (requestOk) {
-				// const { message, error } = await saveToSheet({ status })
-				console.log(status)
-				const message = 'SUCCESS'
+				const { message, error } = await editStatus({ status })
 				if (message === 'SUCCESS')
 					return {
 						headers,
@@ -46,5 +44,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"status": "despachado"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
-// curl -d '{"status": "despachado"}' -X POST http://localhost:9000/edit-status
+// curl -d '{"status": "Despachado"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
+// curl -d '{"status": "Despachado"}' -X POST http://localhost:9000/edit-status
