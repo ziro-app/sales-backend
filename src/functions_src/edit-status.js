@@ -11,15 +11,15 @@ try {
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
-			const { status } = JSON.parse(body)
-			const requestOk = parametersOk && status
+			const { atendimento, status } = JSON.parse(body)
+			const requestOk = parametersOk && atendimento && status
 			if (requestOk) {
-				const { message, error } = await editStatus({ status })
+				const { message, error } = await editStatus({ atendimento, status })
 				if (message === 'SUCCESS')
 					return {
 						headers,
 						statusCode: 200,
-						body: JSON.stringify({ message: 'SUCCESS' }, null, 4)
+						body: JSON.stringify({ message: message }, null, 4)
 					}
 				else
 					return {
@@ -44,5 +44,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"status": "Despachado"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
-// curl -d '{"status": "Despachado"}' -X POST http://localhost:9000/edit-status
+// curl -d '{"atendimento": "12287", "status": "Despachado"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
+// curl -d '{"atendimento": "12287", "status": "Despachado"}' -X POST http://localhost:9000/edit-status
