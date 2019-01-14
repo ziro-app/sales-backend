@@ -33,7 +33,7 @@ try {
 					return {
 						headers,
 						statusCode: 200,
-						body: JSON.stringify({ message: 'SUCCESS' }, null, 4)
+						body: JSON.stringify({ message: message }, null, 4)
 					}
 				else
 					return {
