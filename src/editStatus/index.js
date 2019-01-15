@@ -1,4 +1,4 @@
-const auth = require('./auth')
+const auth = require('../authentication/auth')
 
 const editStatus = ({ atendimento, status }) => {
 	try {

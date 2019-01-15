@@ -1,6 +1,6 @@
-const auth = require('./auth')
+const auth = require('../authentication/auth')
 
-const saveToSheet = data => {
+const createRow = data => {
 	try {
 		return new Promise ( async (resolve, reject) => {
 			const { addRow } = await auth()
@@ -17,4 +17,4 @@ const saveToSheet = data => {
 	}
 }
 
-module.exports = saveToSheet
+module.exports = createRow

@@ -1,4 +1,4 @@
-const editStatus = require('../editStatus')
+const editStatus = require('../editStatus/index')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {

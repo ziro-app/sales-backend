@@ -1,6 +1,6 @@
-const generateId = require('../generateId')
-const { formatDate, now } = require('../formatDate')
-const saveToSheet = require('../saveToSheet')
+const generateId = require('../createRow/generateId')
+const { formatDate, now } = require('../createRow/formatDate')
+const createRow = require('../createRow/index')
 
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
@@ -25,7 +25,7 @@ try {
 				const tipo = type
 				const fim = formatDate(end_date)
 				const status = 'Aberto'
-				const { message, error } = await saveToSheet({
+				const { message, error } = await createRow({
 					atendimento, cadastro, inicio, assessor, lojista,
 					categoria, tipo, fim, status
 				})
