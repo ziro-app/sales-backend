@@ -1,5 +1,5 @@
 const generateId = require('../createRow/generateId')
-const { formatDate, now } = require('../createRow/formatDate')
+const { formatDate, now } = require('../utils/formatDate')
 const createRow = require('../createRow/index')
 
 try {

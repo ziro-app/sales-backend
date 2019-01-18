@@ -1,3 +1,4 @@
+const { formatDate } = require('../utils/formatDate')
 const editRow = require('../editRow/index')
 
 try {
@@ -13,12 +14,12 @@ try {
 		if (methodOk) {
 			const { sale, start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
 			const atendimento = sale
-			const inicio = start_date
+			const inicio = formatDate(start_date)
 			const assessor = representative
 			const lojista = reseller
 			const categoria = category
 			const tipo = type
-			const fim = end_date
+			const fim = formatDate(end_date)
 			const requestOk = parametersOk && atendimento && inicio && assessor && lojista && categoria && tipo && fim
 			if (requestOk) {
 				const { message, error } = await editRow({ atendimento, inicio, assessor, lojista, categoria, tipo, fim })
