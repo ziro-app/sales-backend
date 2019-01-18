@@ -1,6 +1,6 @@
 const auth = require('../authentication/auth')
 
-const editRow = ({ atendimento, inicio, assessor, lojista, categoria, tipo, fim, status }) => {
+const editRow = ({ atendimento, inicio, assessor, lojista, categoria, tipo, fim }) => {
 	try {
 		return new Promise (async (resolve, reject) => {
 			const { getRows } = await auth()
@@ -17,7 +17,6 @@ const editRow = ({ atendimento, inicio, assessor, lojista, categoria, tipo, fim,
 					result.categoria = categoria
 					result.tipo = tipo
 					result.fim = fim
-					result.status = status
 					result.save(error => {
 						if (error)
 							reject({ message: 'Error in row.save', error: error })

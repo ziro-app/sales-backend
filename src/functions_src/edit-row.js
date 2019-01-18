@@ -11,10 +11,17 @@ try {
 		const methodOk = httpMethod === 'POST'
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
-			const { atendimento, inicio, assessor, lojista, categoria, tipo, fim, status } = JSON.parse(body)
-			const requestOk = parametersOk && atendimento && inicio && assessor && lojista && categoria && tipo && fim && status
+			const { sale, start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
+			const atendimento = sale
+			const inicio = start_date
+			const assessor = representative
+			const lojista = reseller
+			const categoria = category
+			const tipo = type
+			const fim = end_date
+			const requestOk = parametersOk && atendimento && inicio && assessor && lojista && categoria && tipo && fim
 			if (requestOk) {
-				const { message, error } = await editRow({ atendimento, inicio, assessor, lojista, categoria, tipo, fim, status })
+				const { message, error } = await editRow({ atendimento, inicio, assessor, lojista, categoria, tipo, fim })
 				if (message === 'SUCCESS')
 					return {
 						headers,
@@ -44,5 +51,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019", "status": "Entregue"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-row
-// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019", "status": "Entregue"}' -X POST http://localhost:9000/edit-row
+// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-row
+// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019"}' -X POST http://localhost:9000/edit-row
