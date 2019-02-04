@@ -19,10 +19,10 @@ try {
 			const lojista = reseller
 			const categoria = category
 			const tipo = type
-			const fim = formatDate(end_date)
-			const requestOk = parametersOk && atendimento && inicio && assessor && lojista && categoria && tipo && fim
+			const despacho = formatDate(end_date)
+			const requestOk = parametersOk && atendimento && inicio && assessor && lojista && categoria && tipo && despacho
 			if (requestOk) {
-				const { message, error } = await editRow({ atendimento, inicio, assessor, lojista, categoria, tipo, fim })
+				const { message, error } = await editRow({ atendimento, inicio, assessor, lojista, categoria, tipo, despacho })
 				if (message === 'SUCCESS')
 					return {
 						headers,
@@ -52,5 +52,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-row
-// curl -d '{"atendimento": "10018", "inicio": "14/ago/2019", "assessor": "Alan", "lojista": "TRIBUNA ROUPAS", "categoria": "Troca", "tipo": "Offline", "fim": "15/set/2019"}' -X POST http://localhost:9000/edit-row
+// curl -d '{"sale": "10018", "start_date": "2019-01-02T20:00:00.000Z", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"2019-01-03T20:00:00.000Z" }' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-row
+// curl -d '{"sale": "10018", "start_date": "2019-05-02T20:00:00.000Z", "representative":"Alan", "reseller":"ADRIANA ALVES SILVA", "category":"Venda", "type":"Offline", "end_date":"2019-08-03T20:00:00.000Z" }' -X POST http://localhost:9000/edit-row

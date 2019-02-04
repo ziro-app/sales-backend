@@ -44,5 +44,5 @@ try {
 	console.log(error)
 }
 
-// curl -d '{"atendimento": "12287", "status": "Despachado"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
-// curl -d '{"atendimento": "12287", "status": "Despachado"}' -X POST http://localhost:9000/edit-status
+// curl -d '{"atendimento": "12287", "status": "Despachando"}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
+// curl -d '{"atendimento": "12287", "status": "Despachando"}' -X POST http://localhost:9000/edit-status
