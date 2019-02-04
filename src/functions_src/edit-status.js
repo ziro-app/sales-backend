@@ -4,7 +4,7 @@ try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 		const headers = {
 			'Access-Control-Allow-Origin': '*',
-			'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
+			// 'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
 		}
