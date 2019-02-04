@@ -5,7 +5,7 @@ const createRow = require('../createRow/index')
 try {
 	exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 		const headers = {
-			// 'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Origin': '*',
 			'Access-Control-Allow-Origin': 'https://atendimento.ziro.online',
 			'Access-Control-Allow-Headers': 'Content-Type',
 			'Vary': 'Origin'
@@ -24,7 +24,7 @@ try {
 				const categoria = category
 				const tipo = type
 				const fim = formatDate(end_date)
-				const status = 'Aberto'
+				const status = 'Escolhendo'
 				const { message, error } = await createRow({
 					atendimento, cadastro, inicio, assessor, lojista,
 					categoria, tipo, fim, status
