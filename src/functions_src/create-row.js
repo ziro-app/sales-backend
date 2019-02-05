@@ -14,9 +14,9 @@ try {
 		const parametersOk = Object.keys(queryStringParameters).length === 0
 		if (methodOk) {
 			const { start_date, representative, reseller, category, type, end_date } = JSON.parse(body)
-			const requestOk = parametersOk && start_date && representative && reseller && category && type && end_date
+			const atendimento = await generateId()
+			const requestOk = parametersOk && atendimento && start_date && representative && reseller && category && type && end_date
 			if (requestOk) {
-				const atendimento = await generateId()
 				const cadastro = now()
 				const inicio = formatDate(start_date)
 				const assessor = representative
