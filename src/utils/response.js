@@ -9,6 +9,7 @@ const response = (state) => {
 		methodError: 'Error. Invalid http method',
 		parametersError: 'Error. Invalid parameters',
 		executionError: 'Error. Internal execution error on runtime. Check logs',
+		dataError: 'Error. Data provided is incorrect',
 		ok: 'Success'
 	}
 	const body = JSON.stringify(message[state], null, 4) 
