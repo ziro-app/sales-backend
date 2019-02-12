@@ -1,6 +1,7 @@
 const generateId = require('./generateId')
 const { formatDate, now } = require('../utils/formatDate')
 const addRowToSheet = require('./addRowToSheet')
+const addEventToCalendar = require('./addEventToCalendar')
 
 const createRow = async ({
 	is_complete,
@@ -53,10 +54,16 @@ const createRow = async ({
 			const fardo = packaging
 			const nota = invoice 
 			const observacao = comments
-			return await addRowToSheet({
+			const sheetStatus = await addRowToSheet({
 				atendimento, cadastro, inicio, assessor, lojista, categoria, tipo, despacho, status,
 				horario, transporte, endereco, fardo, nota, observacao
 			})
+			if (sheetStatus === 'ok') {
+				return await addEventToCalendar({
+					atendimento, assessor, lojista, categoria, tipo, despacho, horario,
+					transporte, endereco, fardo, nota
+				})
+			}
 		}
 	}
 	return 'dataError'

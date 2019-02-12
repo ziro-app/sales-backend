@@ -10,6 +10,7 @@ const response = (state) => {
 		parametersError: 'Error. Invalid parameters',
 		executionError: 'Error. Internal execution error on runtime. Check logs',
 		dataError: 'Error. Data provided is incorrect',
+		calendarError: 'Error. Error on calendar API',
 		ok: 'Success'
 	}
 	const body = JSON.stringify(message[state], null, 4) 
