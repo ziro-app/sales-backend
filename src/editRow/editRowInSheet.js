@@ -47,8 +47,8 @@ const editRowInSheet = ({
 						reject({ message: 'Error in row.save', details: error })
 					resolve('ok')
 				})
-			}
-			reject({ message: 'Error in server getRows', details: 'Row id does not exist' })
+			} else
+				reject({ message: 'Error in server getRows', details: 'Row id does not exist' })
 		})
 	})
 }
