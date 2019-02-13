@@ -44,7 +44,7 @@ const createRow = async ({
 		const status = 'Escolhendo'
 		if (!is_complete) {
 			return await addRowToSheet({
-				atendimento, cadastro, inicio, assessor, lojista, categoria, tipo, despacho, status
+				cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status
 			})
 		}		
 		if (dataCompleteOk) {
@@ -53,15 +53,15 @@ const createRow = async ({
 			const endereco = address
 			const fardo = packaging
 			const nota = invoice 
-			const observacao = comments
+			const observacoes = comments
 			const sheetStatus = await addRowToSheet({
-				atendimento, cadastro, inicio, assessor, lojista, categoria, tipo, despacho, status,
-				horario, transporte, endereco, fardo, nota, observacao
+				cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
+				horario, transporte, endereco, fardo, nota, observacoes
 			})
 			if (sheetStatus === 'ok') {
 				return await addEventToCalendar({
 					atendimento, assessor, lojista, categoria, tipo, despacho, horario,
-					transporte, endereco, fardo, nota
+					transporte, endereco, fardo, nota, observacoes
 				})
 			}
 		}

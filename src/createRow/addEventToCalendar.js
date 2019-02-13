@@ -2,7 +2,7 @@ const post = require('axios').post
 
 const addEventToCalendar = async (eventData) => {
 	const { data: status } = await post(`${process.env.CALENDAR_URL}`, eventData)
-	if (status === 'Sucess')
+	if (status === 'Success')
 		return 'ok'
 	console.log(status)
 	return 'calendarError'
