@@ -4,7 +4,6 @@ const addRowToSheet = require('./addRowToSheet')
 const addEventToCalendar = require('./addEventToCalendar')
 
 const createRow = async ({
-	is_complete,
 	start_date,
 	representative,
 	reseller,
@@ -18,7 +17,6 @@ const createRow = async ({
 	invoice,
 	comments
 }) => {
-	is_complete = is_complete === "true" ? true : false
 	const atendimento = await generateId()
 	const dataPartialOk = atendimento
 		&& start_date
@@ -42,28 +40,24 @@ const createRow = async ({
 		const tipo = type
 		const despacho = formatDate(end_date)
 		const status = 'Escolhendo'
-		if (!is_complete) {
-			return await addRowToSheet({
-				cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status
-			})
-		}		
+		let horario = transporte = endereco = fardo = nota = observacoes = ''
 		if (dataCompleteOk) {
-			const horario = time
-			const transporte = shipping
-			const endereco = address
-			const fardo = packaging
-			const nota = invoice 
-			const observacoes = comments
-			const sheetStatus = await addRowToSheet({
-				cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
-				horario, transporte, endereco, fardo, nota, observacoes
+			horario = time
+			transporte = shipping
+			endereco = address
+			fardo = packaging
+			nota = invoice 
+			observacoes = comments
+		}
+		const sheetStatus = await addRowToSheet({
+			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
+			horario, transporte, endereco, fardo, nota, observacoes
+		})
+		if (sheetStatus === 'ok') {
+			return await addEventToCalendar({
+				atendimento, assessor, lojista, categoria, tipo, despacho, horario,
+				transporte, endereco, fardo, nota, observacoes
 			})
-			if (sheetStatus === 'ok') {
-				return await addEventToCalendar({
-					atendimento, assessor, lojista, categoria, tipo, despacho, horario,
-					transporte, endereco, fardo, nota, observacoes
-				})
-			}
 		}
 	}
 	return 'dataError'
