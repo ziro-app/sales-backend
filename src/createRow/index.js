@@ -56,6 +56,7 @@ const createRow = async ({
 				transporte, endereco, fardo, nota, observacoes
 			})
 		}
+		return 'ok'
 	}
 	return 'dataError'
 }
