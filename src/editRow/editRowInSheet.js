@@ -13,7 +13,8 @@ const editRowInSheet = ({
 	endereco,
 	fardo,
 	nota,
-	observacoes
+	observacoes,
+	retirada
 }) => {
 	return new Promise( async (resolve, reject) => {
 		const { getRows } = await auth()
@@ -34,6 +35,7 @@ const editRowInSheet = ({
 				result.fardo = fardo
 				result.nota = nota
 				result.observacoes = observacoes
+				result.retirada = retirada
 				result.save(error => {
 					if (error)
 						reject({ message: 'Error in row.save', details: error })

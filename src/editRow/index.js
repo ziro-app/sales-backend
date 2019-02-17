@@ -43,10 +43,11 @@ const editRow = async ({
 			endereco = address,
 			fardo = packaging,
 			nota = invoice,
-			observacoes = comments
+			observacoes = comments,
+			retirada = dataCompleteOk ? `RL${atendimento}` : ''
 		const sheetStatus = await editRowInSheet({
 			atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
-			horario, transporte, endereco, fardo, nota, observacoes
+			horario, transporte, endereco, fardo, nota, observacoes, retirada
 		})
 		if (sheetStatus === 'ok' && dataCompleteOk) {
 			return await editEventInCalendar({

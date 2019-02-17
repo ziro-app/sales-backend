@@ -39,16 +39,17 @@ const createRow = async ({
 			categoria = category,
 			tipo = type,
 			despacho = formatDate(end_date),
-			status = 'Escolhendo',
 			horario = time,
 			transporte = shipping,
 			endereco = address,
 			fardo = packaging,
 			nota = invoice,
-			observacoes = comments
+			observacoes = comments,
+			retirada = dataCompleteOk ? `RL${atendimento}` : '',
+			status = 'Escolhendo',
 		const sheetStatus = await addRowToSheet({
-			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
-			horario, transporte, endereco, fardo, nota, observacoes
+			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
+			horario, transporte, endereco, fardo, nota, observacoes, status, retirada
 		})
 		if (sheetStatus === 'ok' && dataCompleteOk) {
 			return await addEventToCalendar({
