@@ -32,28 +32,25 @@ const createRow = async ({
 		&& packaging
 		&& invoice
 	if (dataPartialOk) {
-		const cadastro = now()
-		const inicio = formatDate(start_date)
-		const assessor = representative
-		const lojista = reseller
-		const categoria = category
-		const tipo = type
-		const despacho = formatDate(end_date)
-		const status = 'Escolhendo'
-		let horario = transporte = endereco = fardo = nota = observacoes = ''
-		if (dataCompleteOk) {
-			horario = time
-			transporte = shipping
-			endereco = address
-			fardo = packaging
-			nota = invoice 
+		const cadastro = now(),
+			inicio = formatDate(start_date),
+			assessor = representative,
+			lojista = reseller,
+			categoria = category,
+			tipo = type,
+			despacho = formatDate(end_date),
+			status = 'Escolhendo',
+			horario = time,
+			transporte = shipping,
+			endereco = address,
+			fardo = packaging,
+			nota = invoice ,
 			observacoes = comments
-		}
 		const sheetStatus = await addRowToSheet({
 			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
 			horario, transporte, endereco, fardo, nota, observacoes
 		})
-		if (sheetStatus === 'ok') {
+		if (sheetStatus === 'ok' && dataCompleteOk) {
 			return await addEventToCalendar({
 				atendimento, assessor, lojista, categoria, tipo, despacho, horario,
 				transporte, endereco, fardo, nota, observacoes
