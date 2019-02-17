@@ -46,7 +46,7 @@ const createRow = async ({
 			nota = invoice,
 			observacoes = comments,
 			retirada = dataCompleteOk ? `RL${atendimento}` : '',
-			status = 'Escolhendo',
+			status = 'Escolhendo'
 		const sheetStatus = await addRowToSheet({
 			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
 			horario, transporte, endereco, fardo, nota, observacoes, status, retirada
