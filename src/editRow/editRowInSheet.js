@@ -1,7 +1,6 @@
 const auth = require('../authentication/auth')
 
 const editRowInSheet = ({
-	is_complete,
 	atendimento,
 	inicio,
 	assessor,
@@ -29,13 +28,6 @@ const editRowInSheet = ({
 				result.categoria = categoria
 				result.tipo = tipo
 				result.despacho = despacho
-				if (!is_complete) {
-					result.save(error => {
-						if (error)
-							reject({ message: 'Error in row.save', details: error })
-						resolve('ok')
-					})
-				}
 				result.horario = horario
 				result.transporte = transporte
 				result.endereco = endereco 
