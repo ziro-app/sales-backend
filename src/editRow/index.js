@@ -3,7 +3,6 @@ const editRowInSheet = require('./editRowInSheet')
 const editEventInCalendar = require('./editEventInCalendar')
 
 const editRow = async ({
-	is_complete,
 	sale,
 	start_date,
 	representative,
@@ -18,7 +17,6 @@ const editRow = async ({
 	invoice,
 	comments
 }) => {
-	is_complete = is_complete === "true" ? true : false
 	const dataPartialOk = sale
 		&& start_date
 		&& representative
@@ -34,35 +32,29 @@ const editRow = async ({
 		&& invoice
 	if (dataPartialOk) {
 		const atendimento = sale
-		const inicio = formatDate(start_date)
-		const assessor = representative
-		const lojista = reseller
-		const categoria = category
-		const tipo = type
-		const despacho = formatDate(end_date)
-		if (!is_complete) {
-			return await editRowInSheet({
-				is_complete, atendimento, inicio, assessor, lojista, categoria, tipo, despacho
+			inicio = formatDate(start_date),
+			assessor = representative,
+			lojista = reseller,
+			categoria = category,
+			tipo = type,
+			despacho = formatDate(end_date),
+			horario = time,
+			transporte = shipping,
+			endereco = address,
+			fardo = packaging,
+			nota = invoice,
+			observacoes = comments
+		const sheetStatus = await editRowInSheet({
+			atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
+			horario, transporte, endereco, fardo, nota, observacoes
+		})
+		if (sheetStatus === 'ok' && dataCompleteOk) {
+			return await editEventInCalendar({
+				atendimento, assessor, lojista, categoria, tipo, despacho, horario,
+				transporte, endereco, fardo, nota, observacoes
 			})
-		}		
-		if (dataCompleteOk) {
-			const horario = time
-			const transporte = shipping
-			const endereco = address
-			const fardo = packaging
-			const nota = invoice 
-			const observacoes = comments
-			const sheetStatus = await editRowInSheet({
-				is_complete, atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
-				horario, transporte, endereco, fardo, nota, observacoes
-			})
-			if (sheetStatus === 'ok') {
-				return await editEventInCalendar({
-					atendimento, assessor, lojista, categoria, tipo, despacho, horario,
-					transporte, endereco, fardo, nota, observacoes
-				})
-			}
 		}
+		return 'ok'
 	}
 	return 'dataError'
 }

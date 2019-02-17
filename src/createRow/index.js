@@ -44,7 +44,7 @@ const createRow = async ({
 			transporte = shipping,
 			endereco = address,
 			fardo = packaging,
-			nota = invoice ,
+			nota = invoice,
 			observacoes = comments
 		const sheetStatus = await addRowToSheet({
 			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho, status,
