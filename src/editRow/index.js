@@ -43,7 +43,7 @@ const editRow = async ({
 			endereco = address,
 			fardo = packaging,
 			nota = invoice,
-			observacoes = comments,
+			observacoes = comments.replace(/\r?\n|\r/g, ' '),
 			retirada = dataCompleteOk ? `RL${atendimento}` : ''
 		const sheetStatus = await editRowInSheet({
 			atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
