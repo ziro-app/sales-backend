@@ -51,6 +51,7 @@ const createRow = async ({
 			cadastro, atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
 			horario, transporte, endereco, fardo, nota, observacoes, status, retirada
 		})
+		console.log('function-addRowToSheet-status:', sheetStatus)
 		if (sheetStatus === 'ok' && dataCompleteOk) {
 			return await addEventToCalendar({
 				atendimento, assessor, lojista, categoria, tipo, despacho, horario,

@@ -49,6 +49,7 @@ const editRow = async ({
 			atendimento, inicio, assessor, lojista, categoria, tipo, despacho,
 			horario, transporte, endereco, fardo, nota, observacoes, retirada
 		})
+		console.log('function-editRowInSheet-status:', sheetStatus)
 		if (sheetStatus === 'ok' && dataCompleteOk) {
 			return await editEventInCalendar({
 				atendimento, assessor, lojista, categoria, tipo, despacho, horario,
