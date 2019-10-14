@@ -21,5 +21,5 @@ exports.handler = async ({ httpMethod, queryStringParameters, body }) => {
 	return response(state)
 }
 
-// curl -d '{"atendimento": "10136", "status": "Despachando", "saleIsComplete": true}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
-// curl -d '{"atendimento": "10136", "status": "Despachando", "saleIsComplete": true}' -X POST http://localhost:9000/edit-status
+// curl -d '{"atendimento": "15136", "status": "Despachando", "saleIsComplete": true}' -X POST https://sales-backend.ziro.online/.netlify/functions/edit-status
+// curl -d '{"atendimento": "15136", "status": "Despachando", "saleIsComplete": true}' -X POST http://localhost:9000/edit-status
